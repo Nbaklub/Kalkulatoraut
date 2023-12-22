@@ -1,38 +1,220 @@
-.App {
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background-color: black;
+  overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: white;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container .card {
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.container .card .face {
+  width: 100%;
+  height: 200px;
+  transition: 0.5s;
+}
+
+.container .card .face.face1{
+  position: relative;
+  background: #333;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  z-index: 1;
+  transform: translateY(100px);
+}
+
+.container .card:hover .face.face1{
+  background: #ff0057;
+  transform: translateY(0);
+}
+
+.container .card .face.face1 {
+  position: relative;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transform: translateY(100px);
+}
+
+.container .card .face.face1 .content {
+  opacity: 1;
+  transition: 0.5s;
+  text-align: center; /* Center text within the content div */
+}
+
+.container .card .face.face1 .content img {
+  max-width: 100px;
+  display: block; /* Ensure images are block-level elements */
+  margin: 0 auto; /* Center images horizontally */
+}
+
+.container .card .face.face1 .content h3{
+  margin: 10px 0 0;
+  padding: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 1.5em;
+}
+
+.container .card .face.face2{
+  position: relative;
+  background: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+  transform: translateY(-100px);
+}
+
+.container .card:hover .face.face2{
+  transform: translateY(0);
+}
+
+.container .card .face.face2 .content p{
+  margin: 0;
+  padding: 0;
+}
+
+.container .card .face.face2 .content a{
+  margin: 15px 0 0;
+  display:  inline-block;
+  text-decoration: none;
+  font-weight: 900;
+  color: #333;
+  padding: 5px;
+  border: 1px solid #333;
+}
+
+.container .card .face.face2 .content a:hover{
+  background: #333;
+  color: #333;
+}
+
+.quarter img {
+  height: 150px;
+  width: auto;
+}
+
+p {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+form {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px; /* Added padding to the form for better spacing */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+label {
+  display: block;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.label-text::before {
+  content: attr(data-placeholder);
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  opacity: 0.5;
+  transition: top 0.3s, opacity 0.3s;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  color: gray;
+  outline: none;
+  background-color: transparent;
+  transition: border-bottom-color 0.3s ease;
+}
+.label-text{
+  color: #646464;
+}
+input:focus,
+select:focus {
+  border-bottom-color: #555;
+}
+h2{
+  color: #ff9a3c;
+}
+
+input:focus + .label-text::before,
+input:not(:placeholder-shown) + .label-text::before {
+  top: -12px;
+  opacity: 1;
+  color: white;
+}
+
+button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+.result {
+  width: 300px;
+  height: 50px;
+  border: solid 2px #545454;
+  border-radius: 15px;
+  background-color: #444444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+}
+
+/* Media Queries for responsiveness */
+
+@media screen and (min-width: 768px) {
+  .container .card {
+    width: calc(50% - 10px);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (min-width: 992px) {
+  .container .card {
+    width: calc(33.333% - 10px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container .card {
+    width: calc(25% - 10px); /* Four cards per row with spacing between */
   }
 }
